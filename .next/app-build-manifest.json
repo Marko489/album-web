@@ -11,10 +11,40 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/api/test/route": [
+    "/(public)/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/test/route.js"
+      "static/chunks/app/(public)/login/page.js"
+    ],
+    "/api/auth/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/auth/route.js"
+    ],
+    "/(private)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(private)/layout.js"
+    ],
+    "/(private)/albums/[name]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(private)/albums/[name]/page.js"
+    ],
+    "/api/albums_page/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/albums_page/route.js"
+    ],
+    "/api/fetch_photos/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/fetch_photos/route.js"
+    ],
+    "/api/add_photo/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/add_photo/route.js"
     ]
   }
 }

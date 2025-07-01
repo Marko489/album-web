@@ -1,6 +1,56 @@
 {
   "version": 3,
-  "middleware": {},
-  "functions": {},
-  "sortedMiddleware": []
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge-runtime-webpack.js",
+        "server/middleware.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "^/.*$",
+          "originalSource": "/:path*"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "RPQ3KVkOfvxZDQ2jPACe8S0OeH3dToAmJ72E2d3u+00="
+      }
+    }
+  },
+  "functions": {
+    "/api/add_photo/route": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/api/add_photo/route_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/app/api/add_photo/route.js"
+      ],
+      "name": "app/api/add_photo/route",
+      "page": "/api/add_photo/route",
+      "matchers": [
+        {
+          "regexp": "^/api/add_photo$",
+          "originalSource": "/api/add_photo"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "RPQ3KVkOfvxZDQ2jPACe8S0OeH3dToAmJ72E2d3u+00="
+      }
+    }
+  },
+  "sortedMiddleware": [
+    "/"
+  ]
 }
