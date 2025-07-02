@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import * as crypto from 'crypto';
 
 // Then use:
-const token = crypto.randomBytes(32).toString('hex');
+// const token = crypto.randomBytes(32).toString('hex');
 export async function POST(request: Request) {
   const { name, password, action } = await request.json();
 
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       { error: 'Invalid action' },
       { status: 400 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Database operation failed' },
       { status: 500 }

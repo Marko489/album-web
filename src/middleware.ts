@@ -38,7 +38,7 @@ export async function middleware(request: NextRequest) {
       headers.set('x-album-id', rows[0].album_id);
       
       return NextResponse.next({ headers });
-    } catch (error) {
+    } catch {
       return NextResponse.redirect(new URL('/login', request.url));
     }
   }

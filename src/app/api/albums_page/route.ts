@@ -40,7 +40,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ album_id, album_name: albumRows.rows[0].name }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
   }
 }

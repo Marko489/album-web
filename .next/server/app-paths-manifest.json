@@ -1,8 +1,12 @@
 {
-  "/api/add_photo/route": "app/api/add_photo/route.js",
-  "/api/fetch_photos/route": "app/api/fetch_photos/route.js",
-  "/api/auth/route": "app/api/auth/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/api/albums_page/route": "app/api/albums_page/route.js",
+  "/api/auth/route": "app/api/auth/route.js",
+  "/api/fetch_photos/route": "app/api/fetch_photos/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/delete_photo/route": "app/api/delete_photo/route.js",
   "/(public)/login/page": "app/(public)/login/page.js",
-  "/(private)/albums/[name]/page": "app/(private)/albums/[name]/page.js"
+  "/page": "app/page.js",
+  "/(private)/albums/[name]/page": "app/(private)/albums/[name]/page.js",
+  "/api/add_photo/route": "app/api/add_photo/route.js"
 }

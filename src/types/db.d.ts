@@ -11,5 +11,11 @@ declare global {
     album_id: string;
     blob_url: string;
     description: string | null;
+    uploader_name?: string | null;
+    uploaded_at?: string;
+    view_count?: number;
+    display_order?: number;
+    mime_type?: string;
   }
 }
+export {};

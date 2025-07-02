@@ -18,7 +18,7 @@ export async function GET(request: Request) {
       [album_id]
     );
     return NextResponse.json({ photos: rows }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Database error' }, { status: 500 });
   }
 }

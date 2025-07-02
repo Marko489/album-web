@@ -31,7 +31,11 @@ export async function POST(request: Request) {
     );
 
     return NextResponse.json({ photo: insertRes.rows[0] }, { status: 201 });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Failed to add photo' }, { status: 500 });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json({ error: error.message || 'Failed to add photo' }, { status: 500 });
+    } else {
+      return NextResponse.json({ error: 'Failed to add photo' }, { status: 500 });
+    }
   }
 }

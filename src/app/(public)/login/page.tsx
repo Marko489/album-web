@@ -24,8 +24,12 @@ export default function LoginPage() {
       } else {
         router.push(`/albums/${encodeURIComponent(name)}`);
       }
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Something went wrong');
+      }
     } finally {
       setLoading(false);
     }
@@ -80,11 +84,13 @@ export default function LoginPage() {
           background: #fff;
           border-radius: 18px;
           box-shadow: 0 4px 32px rgba(0,0,0,0.10);
-          padding: 2.5rem 2.5rem 2rem 2.5rem;
+          padding: 2.2rem 2.2rem 1.7rem 2.2rem;
           display: flex;
           flex-direction: column;
           align-items: center;
-          min-width: 320px;
+          width: 370px;
+          aspect-ratio: 370/420;
+          justify-content: center;
         }
         .login-box h1 {
           margin-bottom: 2rem;
@@ -94,25 +100,25 @@ export default function LoginPage() {
         }
         .login-input {
           width: 100%;
-          padding: 0.75rem 1rem;
-          margin-bottom: 1.2rem;
+          padding: 0.75em 1em;
+          margin-bottom: 1.2em;
           border-radius: 8px;
           border: 1px solid #ddd;
-          font-size: 1.1rem;
+          font-size: 1.1em;
           background: #fafbfc;
         }
         .login-actions {
           display: flex;
-          gap: 1rem;
+          gap: 1em;
           width: 100%;
-          margin-bottom: 1rem;
+          margin-bottom: 1em;
         }
         .login-btn, .create-btn {
           flex: 1;
-          padding: 0.7rem 0;
+          padding: 0.7em 0;
           border: none;
           border-radius: 8px;
-          font-size: 1.1rem;
+          font-size: 1.1em;
           font-weight: 600;
           cursor: pointer;
           transition: background 0.2s;
@@ -131,10 +137,32 @@ export default function LoginPage() {
         }
         .login-error {
           color: #c00;
-          margin-top: 0.5rem;
-          font-size: 1rem;
+          margin-top: 0.5em;
+          font-size: 1em;
           text-align: center;
         }
+        @media (max-width: 600px) {
+          .login-box {
+            width: 92vw;
+            max-width: 340px;
+            padding: 1.2rem 1rem 1rem 1rem;
+          }
+        }
+        @media (max-width: 400px) {
+          .login-box {
+            width: 90vw;
+            max-width: 90vw;
+            padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+            border-radius: 10px;
+          }
+        }
+        @media (min-width: 800px) 
+          .login-box {
+            width: 60vw;
+            max-width: 62vw;
+          }
+        }
+        
       `}</style>
     </main>
   );

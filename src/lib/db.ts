@@ -6,7 +6,7 @@ const pool = new Pool({
 });
 
 // For API routes
-export async function sql(strings: TemplateStringsArray, ...values: any[]) {
+export async function sql(strings: TemplateStringsArray, ...values: unknown[]) {
   const client = await pool.connect();
   try {
     return await client.query({

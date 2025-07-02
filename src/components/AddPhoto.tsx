@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import Image from 'next/image';
 
 interface AddPhotoProps {
   album_id: string;
@@ -52,8 +53,12 @@ const AddPhoto: React.FC<AddPhotoProps> = ({ album_id, onClose, onPhotoAdded }) 
       setDescription('');
       onPhotoAdded?.();
       onClose();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Failed to add photo');
+      }
     } finally {
       setLoading(false);
     }
@@ -73,7 +78,21 @@ const AddPhoto: React.FC<AddPhotoProps> = ({ album_id, onClose, onPhotoAdded }) 
         />
         <div className="preview-container" onClick={() => fileInputRef.current?.click()}>
           {previewUrl ? (
-            <img src={previewUrl} alt="Preview" className="preview-img" />
+            <Image
+              src={previewUrl}
+              alt="Preview"
+              width={400}
+              height={300}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '220px',
+                borderRadius: '12px',
+                display: 'block',
+                objectFit: 'contain',
+                background: '#f3f3f3',
+              }}
+              sizes="100vw"
+            />
           ) : (
             <div className="preview-placeholder">Click to select a photo</div>
           )}
@@ -95,23 +114,25 @@ const AddPhoto: React.FC<AddPhotoProps> = ({ album_id, onClose, onPhotoAdded }) 
           .addphoto-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
+            background: rgba(0,0,0,0.72);
+            z-index: 2000;
+            backdrop-filter: blur(2.5px);
           }
           .addphoto-modal {
             background: #fff;
             border-radius: 18px;
             padding: 2rem 2rem 1.5rem 2rem;
-            box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+            box-shadow: 0 8px 40px 0 rgba(0,0,0,0.28), 0 1.5px 8px 0 rgba(0,0,0,0.10);
             max-width: 95vw;
             width: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2100;
           }
           .close-btn {
             position: absolute;

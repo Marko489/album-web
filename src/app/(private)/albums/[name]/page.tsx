@@ -25,10 +25,10 @@ export default function AlbumPageWrapper() {
 }
 
 function AlbumPageClient() {
-  const [photos, setPhotos] = useState<any[]>([]);
+  const [photos, setPhotos] = useState<Photo[]>([]);
   const [albumName, setAlbumName] = useState('');
   const [albumId, setAlbumId] = useState('');
-  const [selectedPhoto, setSelectedPhoto] = useState<any | null>(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [addPhotoOpen, setAddPhotoOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -41,7 +41,7 @@ function AlbumPageClient() {
         setAlbumName(album_name);
         const { photos } = await getPhotos(album_id);
         setPhotos(photos);
-      } catch (e) {
+      } catch {
         // handle error
       } finally {
         setLoading(false);
@@ -63,24 +63,40 @@ function AlbumPageClient() {
 
   return (
     <main>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '2rem 0 1.5rem 0', gap: '1.5rem' }}>
-        <h1 style={{ textAlign: 'center', margin: 0 }}>{albumName}</h1>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '2.5rem 0 2rem 0' }}>
+        <h1
+          style={{
+            textAlign: 'center',
+            margin: 0,
+            fontSize: '2.8rem',
+            fontWeight: 800,
+            letterSpacing: '-1px',
+            lineHeight: 1.1,
+            color: '#181818',
+            textShadow: '0 2px 12px rgba(0,0,0,0.07)',
+          }}
+        >
+          {albumName}
+        </h1>
         <button
+          className="add-photo-btn"
           aria-label="Add Photo"
           style={{
-            width: 40,
-            height: 40,
-            borderRadius: 10,
+            width: 48,
+            height: 48,
+            borderRadius: 12,
             background: '#222',
             color: '#fff',
-            fontSize: 28,
+            fontSize: 32,
             border: 'none',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-            marginLeft: 12,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
+            marginTop: 24,
+            marginBottom: 8,
+            transition: 'background 0.2s',
           }}
           onClick={() => setAddPhotoOpen(true)}
         >
@@ -93,7 +109,11 @@ function AlbumPageClient() {
         <AlbumGrid photos={photos} onPhotoClick={setSelectedPhoto} />
       )}
       {selectedPhoto && (
-        <PhotoLookup photo={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
+        <PhotoLookup
+          photo={selectedPhoto}
+          onClose={() => setSelectedPhoto(null)}
+          onPhotoDeleted={refreshPhotos}
+        />
       )}
       {addPhotoOpen && (
         <AddPhoto
