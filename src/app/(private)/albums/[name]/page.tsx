@@ -86,7 +86,7 @@ function AlbumPageClient() {
     if (effectiveWidth <= 600 && window.innerHeight > window.innerWidth) {
       cappedColumns = 2;
     } else {
-      cappedColumns = Math.max(2, Math.ceil(effectiveWidth / 300));
+      cappedColumns = Math.max(2, Math.ceil(effectiveWidth / 450));
     }
     if (effectiveWidth <= 600 && window.innerHeight > window.innerWidth) {
       titleFontSize = '1.5rem';
