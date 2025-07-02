@@ -78,12 +78,12 @@ export default function LoginPage() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #f7f7fa;
+          background: #181818;
         }
         .login-box {
-          background: #fff;
+          background: #23232b;
           border-radius: 18px;
-          box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+          box-shadow: 0 8px 40px 0 rgba(0,0,0,0.55), 0 1.5px 8px 0 rgba(0,0,0,0.22);
           padding: 2.2rem 2.2rem 1.7rem 2.2rem;
           display: flex;
           flex-direction: column;
@@ -96,16 +96,17 @@ export default function LoginPage() {
           margin-bottom: 2rem;
           font-size: 2rem;
           font-weight: 700;
-          color: #222;
+          color: #f4f4f4;
         }
         .login-input {
           width: 100%;
           padding: 0.75em 1em;
           margin-bottom: 1.2em;
           border-radius: 8px;
-          border: 1px solid #ddd;
+          border: 1px solid #39394a;
           font-size: 1.1em;
-          background: #fafbfc;
+          background: #23232b;
+          color: #f4f4f4;
         }
         .login-actions {
           display: flex;
@@ -124,19 +125,22 @@ export default function LoginPage() {
           transition: background 0.2s;
         }
         .login-btn {
-          background: #222;
+          background: #e60023;
           color: #fff;
+          box-shadow: 0 2px 8px rgba(230,0,35,0.10);
         }
         .login-btn:disabled, .create-btn:disabled {
-          background: #aaa;
+          background: #39394a;
+          color: #888;
           cursor: not-allowed;
         }
         .create-btn {
-          background: #f3f3f3;
-          color: #222;
+          background: #23232b;
+          color: #f4f4f4;
+          border: 1.5px solid #39394a;
         }
         .login-error {
-          color: #c00;
+          color: #e60023;
           margin-top: 0.5em;
           font-size: 1em;
           text-align: center;

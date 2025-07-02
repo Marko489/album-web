@@ -1,6 +1,8 @@
 import pool from '@/lib/db';
 import { NextResponse } from 'next/server';
 
+export const runtime = 'edge';
+
 export async function GET(request: Request) {
   // Get session token from cookies
   const cookieHeader = request.headers.get('cookie') || '';

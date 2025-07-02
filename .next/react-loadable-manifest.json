@@ -14,13 +14,13 @@
   "app\\(private)\\albums\\[name]\\page.tsx -> @/components/AddPhoto": {
     "id": 8795,
     "files": [
-      "static/chunks/795.0259c20dcfc8f89b.js"
+      "static/chunks/795.c054fed18a2d3899.js"
     ]
   },
   "app\\(private)\\albums\\[name]\\page.tsx -> @/components/PhotoLookup": {
     "id": 1150,
     "files": [
-      "static/chunks/150.705b04a20543b47a.js"
+      "static/chunks/150.625d2a22e3d933a7.js"
     ]
   }
 }

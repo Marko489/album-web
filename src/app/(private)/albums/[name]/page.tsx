@@ -31,6 +31,17 @@ function AlbumPageClient() {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [addPhotoOpen, setAddPhotoOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 1200
+  );
+  React.useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   React.useEffect(() => {
     async function fetchData() {
@@ -61,19 +72,54 @@ function AlbumPageClient() {
     }
   };
 
+  // Responsive font and button sizing
+  let titleFontSize = '1.5rem';
+  let buttonSize = 32;
+  let plusFontSize = 18;
+  let titleButtonGap = 12;
+  let headerMarginTop = 24;
+  let headerMarginBottom = 16;
+  if (typeof window !== 'undefined') {
+    // Cap the effective width at 1200px for scaling
+    const effectiveWidth = Math.min(window.innerWidth, 1500);
+    let cappedColumns = 2;
+    if (effectiveWidth <= 600 && window.innerHeight > window.innerWidth) {
+      cappedColumns = 2;
+    } else {
+      cappedColumns = Math.max(2, Math.ceil(effectiveWidth / 300));
+    }
+    if (effectiveWidth <= 600 && window.innerHeight > window.innerWidth) {
+      titleFontSize = '1.5rem';
+      buttonSize = 32;
+      plusFontSize = 18;
+      titleButtonGap = 10;
+      headerMarginTop = 18;
+      headerMarginBottom = 10;
+    } else {
+      // scale up with columns, but smaller than before, and capped
+      titleFontSize = `${0.9 + cappedColumns * 0.45}rem`;
+      buttonSize = 20 + cappedColumns * 7;
+      plusFontSize = Math.round(buttonSize * 0.55);
+      titleButtonGap = 6 + cappedColumns * 6;
+      headerMarginTop = 16 + cappedColumns * 8;
+      headerMarginBottom = 8 + cappedColumns * 6;
+    }
+  }
+
   return (
-    <main>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '2.5rem 0 2rem 0' }}>
+    <main style={{ background: '#181818', minHeight: '100vh', width: '100vw', color: '#f4f4f4', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, overflowY: 'auto' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: `${headerMarginTop}px 0 ${headerMarginBottom}px 0` }}>
         <h1
           style={{
             textAlign: 'center',
             margin: 0,
-            fontSize: '2.8rem',
+            fontSize: titleFontSize,
             fontWeight: 800,
             letterSpacing: '-1px',
             lineHeight: 1.1,
-            color: '#181818',
-            textShadow: '0 2px 12px rgba(0,0,0,0.07)',
+            color: '#f4f4f4',
+            textShadow: '0 2px 12px rgba(0,0,0,0.32)',
+            transition: 'font-size 0.2s',
           }}
         >
           {albumName}
@@ -82,29 +128,29 @@ function AlbumPageClient() {
           className="add-photo-btn"
           aria-label="Add Photo"
           style={{
-            width: 48,
-            height: 48,
+            width: buttonSize,
+            height: buttonSize,
             borderRadius: 12,
-            background: '#222',
+            background: '#d7263d',
             color: '#fff',
-            fontSize: 32,
             border: 'none',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
-            marginTop: 24,
+            boxShadow: '0 2px 8px rgba(215,38,61,0.18)',
+            marginTop: titleButtonGap,
             marginBottom: 8,
-            transition: 'background 0.2s',
+            transition: 'background 0.2s, width 0.2s, height 0.2s',
+            padding: 0,
           }}
           onClick={() => setAddPhotoOpen(true)}
         >
-          +
+          <span style={{ fontSize: plusFontSize, lineHeight: 1, fontWeight: 700, display: 'block', width: '100%', textAlign: 'center' }}>+</span>
         </button>
       </div>
       {loading ? (
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>Loading...</div>
+        <div style={{ textAlign: 'center', marginTop: '2rem', color: '#f4f4f4' }}>Loading...</div>
       ) : (
         <AlbumGrid photos={photos} onPhotoClick={setSelectedPhoto} />
       )}

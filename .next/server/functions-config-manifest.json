@@ -1,6 +1,9 @@
 {
   "version": 1,
   "functions": {
-    "/api/add_photo": {}
+    "/api/albums_page": {},
+    "/api/add_photo": {},
+    "/api/delete_photo": {},
+    "/api/fetch_photos": {}
   }
 }
