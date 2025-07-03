@@ -56,8 +56,8 @@ const PhotoLookup: React.FC<PhotoLookupProps> = ({ photo, onClose, onPhotoDelete
   let descMarginTop = 10;
   if (typeof window !== 'undefined') {
     // Margin from viewport edge
-    const marginW = Math.max(window.innerWidth * 0.05, 32);
-    const marginH = Math.max(window.innerHeight * 0.05, 32);
+    const marginW = Math.max(window.innerWidth * 0.01, 8); // 1% margin for width
+    const marginH = Math.max(window.innerHeight * 0.045, 28.8); // 10% margin for height
     const maxBoxW = window.innerWidth - 2 * marginW;
     const maxBoxH = window.innerHeight - 2 * marginH;
     if (window.innerWidth <= 600 && window.innerHeight > window.innerWidth) {
@@ -97,6 +97,15 @@ const PhotoLookup: React.FC<PhotoLookupProps> = ({ photo, onClose, onPhotoDelete
     if (fitH > boxH) {
       fitH = boxH;
       fitW = boxH * aspect;
+    }
+    // Prevent upscaling beyond original image resolution
+    if (fitW > imgNatural.w) {
+      fitW = imgNatural.w;
+      fitH = fitW / aspect;
+    }
+    if (fitH > imgNatural.h) {
+      fitH = imgNatural.h;
+      fitW = fitH * aspect;
     }
     imageMaxWidth = fitW;
     imageMaxHeight = fitH;
@@ -238,6 +247,7 @@ const PhotoLookup: React.FC<PhotoLookupProps> = ({ photo, onClose, onPhotoDelete
             }}
             sizes="(max-width: 900px) 90vw, 700px"
             priority={true}
+            unoptimized={true}
           />
         </div>
         {/* Description at the bottom */}

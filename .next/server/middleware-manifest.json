@@ -4,24 +4,21 @@
     "/": {
       "files": [
         "server/edge-runtime-webpack.js",
-        "server/src/middleware.js"
+        "server/middleware.js"
       ],
-      "name": "src/middleware",
+      "name": "middleware",
       "page": "/",
       "matchers": [
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/albums(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\.json)?[\\/#\\?]?$",
-          "originalSource": "/albums/:path*"
+          "regexp": "^/.*$",
+          "originalSource": "/:path*"
         }
       ],
       "wasm": [],
       "assets": [],
       "env": {
-        "__NEXT_BUILD_ID": "8o-8iRG4KvI34CWEKJGlJ",
-        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "4Rcv/5Er64cgVXJ4MJixPQytZUcJAHO3yxV2xwSdbHY=",
-        "__NEXT_PREVIEW_MODE_ID": "70c25fe12dcc6a40d49a82d58f54cf48",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "4f99ca49a7e166bdac3a4c2796675d975f874c43fc556afab2df9e2d00824565",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "188f5f9fa96e920af9049b01381e859ccc11638751a76285afe1a29b2b966cfb"
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "4Rcv/5Er64cgVXJ4MJixPQytZUcJAHO3yxV2xwSdbHY="
       }
     }
   },
@@ -35,7 +32,6 @@
         "server/next-font-manifest.js",
         "server/interception-route-rewrite-manifest.js",
         "server/edge-runtime-webpack.js",
-        "server/edge-chunks/287.js",
         "server/app/api/albums_page/route.js"
       ],
       "name": "app/api/albums_page/route",
@@ -49,73 +45,8 @@
       "wasm": [],
       "assets": [],
       "env": {
-        "__NEXT_BUILD_ID": "8o-8iRG4KvI34CWEKJGlJ",
-        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "4Rcv/5Er64cgVXJ4MJixPQytZUcJAHO3yxV2xwSdbHY=",
-        "__NEXT_PREVIEW_MODE_ID": "70c25fe12dcc6a40d49a82d58f54cf48",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "4f99ca49a7e166bdac3a4c2796675d975f874c43fc556afab2df9e2d00824565",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "188f5f9fa96e920af9049b01381e859ccc11638751a76285afe1a29b2b966cfb"
-      }
-    },
-    "/api/add_photo/route": {
-      "files": [
-        "server/server-reference-manifest.js",
-        "server/app/api/add_photo/route_client-reference-manifest.js",
-        "server/middleware-build-manifest.js",
-        "server/middleware-react-loadable-manifest.js",
-        "server/next-font-manifest.js",
-        "server/interception-route-rewrite-manifest.js",
-        "server/edge-runtime-webpack.js",
-        "server/edge-chunks/287.js",
-        "server/edge-chunks/957.js",
-        "server/app/api/add_photo/route.js"
-      ],
-      "name": "app/api/add_photo/route",
-      "page": "/api/add_photo/route",
-      "matchers": [
-        {
-          "regexp": "^/api/add_photo$",
-          "originalSource": "/api/add_photo"
-        }
-      ],
-      "wasm": [],
-      "assets": [],
-      "env": {
-        "__NEXT_BUILD_ID": "8o-8iRG4KvI34CWEKJGlJ",
-        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "4Rcv/5Er64cgVXJ4MJixPQytZUcJAHO3yxV2xwSdbHY=",
-        "__NEXT_PREVIEW_MODE_ID": "70c25fe12dcc6a40d49a82d58f54cf48",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "4f99ca49a7e166bdac3a4c2796675d975f874c43fc556afab2df9e2d00824565",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "188f5f9fa96e920af9049b01381e859ccc11638751a76285afe1a29b2b966cfb"
-      }
-    },
-    "/api/delete_photo/route": {
-      "files": [
-        "server/server-reference-manifest.js",
-        "server/app/api/delete_photo/route_client-reference-manifest.js",
-        "server/middleware-build-manifest.js",
-        "server/middleware-react-loadable-manifest.js",
-        "server/next-font-manifest.js",
-        "server/interception-route-rewrite-manifest.js",
-        "server/edge-runtime-webpack.js",
-        "server/edge-chunks/287.js",
-        "server/edge-chunks/957.js",
-        "server/app/api/delete_photo/route.js"
-      ],
-      "name": "app/api/delete_photo/route",
-      "page": "/api/delete_photo/route",
-      "matchers": [
-        {
-          "regexp": "^/api/delete_photo$",
-          "originalSource": "/api/delete_photo"
-        }
-      ],
-      "wasm": [],
-      "assets": [],
-      "env": {
-        "__NEXT_BUILD_ID": "8o-8iRG4KvI34CWEKJGlJ",
-        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "4Rcv/5Er64cgVXJ4MJixPQytZUcJAHO3yxV2xwSdbHY=",
-        "__NEXT_PREVIEW_MODE_ID": "70c25fe12dcc6a40d49a82d58f54cf48",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "4f99ca49a7e166bdac3a4c2796675d975f874c43fc556afab2df9e2d00824565",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "188f5f9fa96e920af9049b01381e859ccc11638751a76285afe1a29b2b966cfb"
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "4Rcv/5Er64cgVXJ4MJixPQytZUcJAHO3yxV2xwSdbHY="
       }
     },
     "/api/fetch_photos/route": {
@@ -127,7 +58,6 @@
         "server/next-font-manifest.js",
         "server/interception-route-rewrite-manifest.js",
         "server/edge-runtime-webpack.js",
-        "server/edge-chunks/287.js",
         "server/app/api/fetch_photos/route.js"
       ],
       "name": "app/api/fetch_photos/route",
@@ -141,11 +71,8 @@
       "wasm": [],
       "assets": [],
       "env": {
-        "__NEXT_BUILD_ID": "8o-8iRG4KvI34CWEKJGlJ",
-        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "4Rcv/5Er64cgVXJ4MJixPQytZUcJAHO3yxV2xwSdbHY=",
-        "__NEXT_PREVIEW_MODE_ID": "70c25fe12dcc6a40d49a82d58f54cf48",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "4f99ca49a7e166bdac3a4c2796675d975f874c43fc556afab2df9e2d00824565",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "188f5f9fa96e920af9049b01381e859ccc11638751a76285afe1a29b2b966cfb"
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "4Rcv/5Er64cgVXJ4MJixPQytZUcJAHO3yxV2xwSdbHY="
       }
     }
   },
