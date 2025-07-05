@@ -2,8 +2,16 @@ import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import { put } from '@vercel/blob';
 
-export const runtime = 'edge';
 
+
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '10mb', // You can increase this to 25mb or 50mb if needed
+    },
+  },
+};
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
