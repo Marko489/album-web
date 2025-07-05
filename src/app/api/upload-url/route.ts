@@ -1,4 +1,4 @@
-import { generateUploadUrl } from '@vercel/blob';
+import { put, generateUploadUrl } from '@vercel/blob';
 
 export async function GET() {
   const { url } = await generateUploadUrl();
