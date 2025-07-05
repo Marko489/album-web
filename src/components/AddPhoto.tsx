@@ -38,39 +38,62 @@ const AddPhoto: React.FC<AddPhotoProps> = ({ album_id, onClose, onPhotoAdded }) 
 
   const handleAddPhoto = async () => {
     if (!file) {
-      setError('Please select a photo.');
-      return;
+        setError('Please select a photo.');
+        return;
     }
+
     setLoading(true);
     setError(null);
+
     try {
-      const formData = new FormData();
-      formData.append('album_id', album_id);
-      formData.append('photo', file);
-      formData.append('description', description);
-      const res = await fetch('/api/add_photo', {
-        method: 'POST',
-        body: formData,
-      });
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || 'Failed to add photo');
-      }
-      setFile(null);
-      setPreviewUrl(null);
-      setDescription('');
-      onPhotoAdded?.();
-      onClose();
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('Failed to add photo');
-      }
+        // Step 1: Get signed upload URL
+        const res = await fetch('/api/upload-url');
+        const { url } = await res.json();
+
+        // Step 2: Upload file to blob URL
+        const uploadRes = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': file.type,
+            },
+            body: file,
+        });
+
+        if (!uploadRes.ok) {
+            throw new Error('Failed to upload file to Blob storage');
+        }
+
+        // Step 3: Save photo metadata to DB
+        const blob_url = url.split('?')[0]; // remove query params
+        const saveRes = await fetch('/api/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                album_id,
+                blob_url,
+                description,
+                mime_type: file.type,
+            }),
+        });
+
+        if (!saveRes.ok) {
+            const data = await saveRes.json();
+            throw new Error(data.error || 'Failed to save photo');
+        }
+
+        // Clean up
+        setFile(null);
+        setPreviewUrl(null);
+        setDescription('');
+        onPhotoAdded?.();
+        onClose();
+    } catch (err: any) {
+        setError(err.message || 'Upload failed');
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
+  
 
   // Responsive font sizing based on modal width
   let fontScale = 1;
