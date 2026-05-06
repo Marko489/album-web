@@ -1,36 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Albumova stranka urcena na ukladanie fotiek do virtualneho albumu s Blob databazov na verceli. 
 
-## Getting Started
+Pouzite technologie: 
+-  Blob databaza
+-  Next.js
+-  Vercel
+-  Typescript
 
-First, run the development server:
+Ide o jednoduchu albumovu stranku, kde kazdy uzivatel moze vytvorit svoj vlastny album alebo si vytvorit uplne novy album. Stranka ma dve havne casti, jedna je autentifikacna podstranka, kde uzivatel zada meno albumu a heslo albumu, takto umoznuje viacerym pouzivatelom mat spolocny album bez potreby vytvarania zbytocnych profilov. 
+Druha cast je nadlhlad na album, kde je mozne odstranovat alebo pridavat fotky podla potreby. Samotny layout albumu je dynamicky takze nie vsetky fotky maju rovnaky tvar ale co najefektivnejsie vyplnaju priestor. Do kazdej fotky je mozne pridat popisok s hocijakymi informaciami, ci uz to je datum urobenia fotky atd.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Priamociary proces:
+Otvorit stranku => zadat meno heslo albumu => nechat sa presmerovat na nadhlad albumu => upravovat si album ako chcem 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel link: album-web-kappa.vercel.app
