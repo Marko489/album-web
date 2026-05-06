@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import { del } from '@vercel/blob';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 export async function DELETE(request: Request) {
   try {
