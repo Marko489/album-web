@@ -2,14 +2,7 @@ import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import { put } from '@vercel/blob';
 
-// ✅ Remove Edge runtime – switch to Node.js for larger uploads
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '10mb',
-    },
-  },
-};
+export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
   try {

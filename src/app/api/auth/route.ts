@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import * as crypto from 'crypto';
 
+export const runtime = 'nodejs';
+
 // Then use:
 // const token = crypto.randomBytes(32).toString('hex');
 export async function POST(request: Request) {
