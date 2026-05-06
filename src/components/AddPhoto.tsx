@@ -1,7 +1,7 @@
 
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
-
+'use client';
 interface AddPhotoProps {
   album_id: string;
   onClose: () => void;
